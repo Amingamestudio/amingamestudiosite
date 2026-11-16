@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d1c">
+<title>AMIN GAME SAYTE</title>
+<style>
+:root{--bg:#080d1c;--panel:#111a2e;--panel2:#17233c;--text:#f4f7ff;--muted:#aab6cf;--blue:#3b82f6;--cyan:#22d3ee;--line:rgba(255,255,255,.09)}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:radial-gradient(ellipse at 80% 0%,#172c57 0,transparent 38%),radial-gradient(ellipse at 5% 30%,#24164a 0,transparent 30%),var(--bg);color:var(--text);min-height:100vh}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1100px,92%);margin:auto}
+header{position:sticky;top:0;z-index:5;background:rgba(8,13,28,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.5px}
+.logo{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,var(--blue),#8b5cf6);display:grid;place-items:center;box-shadow:0 7px 25px #3b82f655;font-size:19px}
+.brand span{font-size:17px}
+.navtag{font-size:12px;color:var(--cyan);border:1px solid #22d3ee55;padding:7px 11px;border-radius:30px}
+.hero{padding:65px 0 48px;text-align:center}
+.eyebrow{color:var(--cyan);font-size:13px;font-weight:bold;letter-spacing:2px}
+h1{font-size:clamp(32px,7vw,58px);line-height:1.2;margin:16px 0 12px;font-weight:1000}
+h1 .shine{background:linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:15px;line-height:2;max-width:620px;margin:0 auto}
+.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{border:0;border-radius:12px;padding:12px 19px;font-weight:bold;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.primary{background:linear-gradient(110deg,var(--blue),#7657e8);color:white;box-shadow:0 8px 24px #3b82f644}
+.secondary{background:#ffffff0b;color:var(--text);border:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px auto 45px;max-width:650px}
+.stat{background:#ffffff08;border:1px solid var(--line);border-radius:15px;padding:15px}
+.stat b{display:block;font-size:21px;color:#93c5fd}
+.stat small{color:var(--muted);font-size:11px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:18px}
+.section-head h2{font-size:23px;margin:0 0 6px}
+.section-head p{font-size:12px;color:var(--muted);margin:0}
+.search{width:min(260px,48%);background:#ffffff0b;border:1px solid var(--line);border-radius:11px;padding:11px 13px;color:white;outline:none;font:inherit;font-size:12px}
+.search:focus{border-color:#60a5fa}
+.games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:55px}
+.game{background:linear-gradient(145deg,#17243d,#10182a);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.25s}
+.game:hover{transform:translateY(-4px);border-color:#60a5fa66;box-shadow:0 18px 35px #0005}
+.cover{height:155px;display:grid;place-items:center;position:relative;overflow:hidden}
+.cover:before,.cover:after{content:"";position:absolute;border-radius:50%;filter:blur(1px)}
+.cover:before{width:180px;height:180px;background:#60a5fa44;top:-90px;right:-35px}
+.cover:after{width:140px;height:140px;background:#a78bfa55;bottom:-95px;left:20px}
+.cover .symbol{font-size:55px;z-index:1;filter:drop-shadow(0 8px 18px #0008)}
+.cover.rp{background:linear-gradient(135deg,#142b52,#38205f)}
+.cover.sky{background:linear-gradient(135deg,#123a56,#274c87)}
+.game-body{padding:18px}
+.game-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.game h3{font-size:19px;margin:0}
+.pill{font-size:10px;color:#86efac;background:#22c55e18;border:1px solid #22c55e44;padding:5px 9px;border-radius:20px;white-space:nowrap}
+.game p{font-size:12px;color:var(--muted);line-height:1.9;min-height:45px;margin:12px 0 17px}
+.game-actions{display:flex;gap:9px}
+.game-actions .btn{flex:1;padding:10px 8px;font-size:12px}
+.empty{display:none;text-align:center;color:var(--muted);padding:30px;grid-column:1/-1}
+.about{background:#ffffff08;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:50px}
+.about h2{font-size:19px;margin:0 0 10px}
+.about p{color:var(--muted);font-size:13px;line-height:2;margin:0}
+footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:11px;text-align:center}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#17233c;border:1px solid #60a5fa66;padding:11px 17px;border-radius:12px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:10}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:650px){.hero{padding:48px 0 35px}.games{grid-template-columns:1fr}.cover{height:135px}.stats{gap:8px}.stat{padding:12px 5px}.stat b{font-size:18px}.section-head{align-items:center}.section-head h2{font-size:20px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#"><div class="logo">🎮</div><span>AMIN GAME</span></a>
+    <span class="navtag">مرکز بازی‌ها</span>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">WELCOME TO MY GAMING WORLD</div>
+    <h1><span class="shine">AMIN GAME SAYTE</span></h1>
+    <p>به دنیای بازی‌های امین خوش اومدی! بازی‌های ساخته‌شده توسط استودیوی AMIN GAME رو پیدا کن، واردشون شو و رکوردهای جدید ثبت کن.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#games">🎮 مشاهده بازی‌ها</a>
+      <a class="btn secondary" href="#about">درباره سایت</a>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="آمار سایت">
+    <div class="stat"><b id="gameCount">۲</b><small>بازی منتشرشده</small></div>
+    <div class="stat"><b>AMIN</b><small>سازنده</small></div>
+    <div class="stat"><b>۲۴/۷</b><small>دسترسی به سایت</small></div>
+  </section>
+
+  <section id="games">
+    <div class="section-head">
+      <div><h2>🎯 بازی‌های من</h2><p>یک بازی رو انتخاب کن و شروع کن!</p></div>
+      <input id="search" class="search" type="search" placeholder="جست‌وجوی بازی..." aria-label="جست‌وجوی بازی">
+    </div>
+    <div class="games" id="gameList">
+      <article class="game" data-name="rp shahr ارپی شهر نقش آفرینی">
+        <div class="cover rp"><div class="symbol">🏙️</div></div>
+        <div class="game-body">
+          <div class="game-top"><h3>RP Shahr</h3><span class="pill">منتشر شده</span></div>
+          <p>وارد شهر شو و ماجراجویی خودت رو در دنیای RP Shahr شروع کن!</p>
+          <div class="game-actions">
+            <a class="btn primary" href="https://preview-chat-78c10101-fce6-4c47-97b7-bbd098b27bd2.space-z.ai/" target="_blank" rel="noopener">▶ ورود به بازی</a>
+            <button class="btn secondary copy" data-link="https://preview-chat-78c10101-fce6-4c47-97b7-bbd098b27bd2.space-z.ai/">کپی لینک</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="game" data-name="sky rosh اسکای روشن پارکور">
+        <div class="cover sky"><div class="symbol">☁️</div></div>
+        <div class="game-body">
+          <div class="game-top"><h3>Sky Rosh</h3><span class="pill">منتشر شده</span></div>
+          <p>مهارت پارکور خودت رو امتحان کن، جلو برو و برای ثبت رکورد بهتر تلاش کن!</p>
+          <div class="game-actions">
+            <a class="btn primary" href="https://preview-chat-ba029699-6cba-4cea-80f8-3db352d35461.space-z.ai/" target="_blank" rel="noopener">▶ ورود به بازی</a>
+            <button class="btn secondary copy" data-link="https://preview-chat-ba029699-6cba-4cea-80f8-3db352d35461.space-z.ai/">کپی لینک</button>
+          </div>
+        </div>
+      </article>
+      <div class="empty" id="empty">بازی‌ای با این نام پیدا نشد.</div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>👾 درباره AMIN GAME</h2>
+    <p>AMIN GAME یک استودیوی بازی‌سازی مستقل است. در این سایت می‌تونی بازی‌های منتشرشده رو ببینی و با یک لمس وارد هر بازی بشی. بازی‌های جدید هم در آینده به این مجموعه اضافه می‌شن.</p>
+  </section>
+</main>
+<footer><div class="wrap">ساخته‌شده با ❤️ توسط <b>AMIN GAME</b> · © 2026</div></footer>
+<div class="toast" id="toast">لینک کپی شد!</div>
+<script>
+const search=document.getElementById('search');
+const cards=[...document.querySelectorAll('.game')];
+const empty=document.getElementById('empty');
+search.addEventListener('input',()=>{
+  const q=search.value.trim().toLowerCase();let shown=0;
+  cards.forEach(card=>{const ok=card.dataset.name.toLowerCase().includes(q);card.style.display=ok?'':'none';if(ok)shown++;});
+  empty.style.display=shown?'none':'block';
+});
+document.querySelectorAll('.copy').forEach(btn=>btn.addEventListener('click',async()=>{
+  const link=btn.dataset.link;
+  try{await navigator.clipboard.writeText(link);showToast('لینک بازی کپی شد!');}
+  catch(e){const t=document.createElement('textarea');t.value=link;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();showToast('لینک بازی کپی شد!');}
+}));
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2100);}
+</script>
+</body>
+</html>
